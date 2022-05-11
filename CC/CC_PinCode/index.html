@@ -1,0 +1,95 @@
+<html>
+    <style>
+        .weatherText {
+            font-family: "Lato", "sans-serif";
+            font-size: 24px;
+            text-align: center;
+        }
+
+        #weatherForm {
+            padding: 20px;
+        }
+
+        #weatherSubmit {
+            color: white;
+            background-color: #083375;
+            padding: 5px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        #weatherSubmit:hover {
+            cursor: pointer;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .card {
+            border: 2px solid black;
+            width: 50%;
+
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <head>
+        <title class="alignct">Post Office Finder</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1 id="error_head" style="display: none" value="{{error}}">
+            {{error}}
+        </h1>
+        <div class="card">
+            <h2 class="weatherText">Post Office Finder Using WebApp</h2>
+
+            <form class="weatherText" id="weatherForm" action="/" method="post">
+                Location Zip Code:
+                
+                <input
+                    class="weatherText"
+                    id="weatherInput"
+                    name="zipCode"
+                    onkeypress="return isNumberKey(event)"
+                /><br />
+                <input
+                    class="weatherText"
+                    id="weatherSubmit"
+                    type="submit"
+                    value="Submit"
+                />
+            </form>
+        </div>
+       <script>
+           function isNumberKey(evt) {
+                if(document.getElementById("weatherInput").value.length>=6)
+                {
+                    alert("Length Should 6");
+                    return false ; 
+                }
+                var charCode = (evt.which) ? evt.which : event.keyCode;
+                if ((charCode < 48 || charCode > 57))
+                {
+                    alert("Only Digits are allowed")
+                    return false;
+                }
+                
+                return true ;
+            }
+            $('#weatherForm').submit(function() {
+                if(document.getElementById("weatherInput").value.length!=6)
+                {
+                    alert("Length Should 6");
+                    return false ; 
+                }
+            });
+    
+       </script>
+    </body>
+</html>
