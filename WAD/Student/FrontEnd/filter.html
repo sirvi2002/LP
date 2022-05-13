@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+<body onload="filter()">
+    <table class="table" id="table">
+       
+    </table>
+    <script>
+        function filter()
+        {
+            fetch('http://localhost:5000/students/filter')
+            .then(res => res.json())
+            .then(res=> {
+                $('#table').append("<tr><th>Name</th><th>Roll no</th><th>WADL</th><th>CCL</th></tr>")
+                console.log(res[0]);
+                for(item in res){
+                    console.log(item);
+                    $('#table').append("<tr><td>" + res[item].name + "</td><td>" + res[item].rollNo + "</td><td>" + res[item].wad + "</td><td>" + res[item].cc + "</td><td>")
+                }
+            });
+        }
+    </script>
+</body>
+</html>
